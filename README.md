@@ -1,16 +1,16 @@
 <h1 align="center">
-  ServiçoAqui API
+  ServicoAqui API-Backend
   <div>
     <img src="https://img.shields.io/badge/-Node.js-green" />
     <img src="https://img.shields.io/badge/-Express-yellow" />
   </div>
 </h1>
 
-> API para agendamentos de prestador de serviço.
+> API para agendamentos de prestadores de serviço.
 
 ## Descrição
 
-API em Node.js com Express utilizando as tecnologias e boas práticas mais utilizadas pelas empresas.
+API em Node.js com Express desenvolvida utilizando as tecnologias e boas práticas mais utilizadas pelas empresas.
 
 - ⚡ **Express** — Framework web para criar APIs em Node.js
 - 💎 **Sequelize** — ORM para Node.js que suporta banco de dados PostgreSQL e outros
@@ -34,24 +34,18 @@ Para rodar este servidor é necessário criar 3 containers no docker, para o Pos
 
 Com o Docker devidamente instalado, rode os seguintes comandos no seu terminal:
 
-- `docker run --name redisbarber -p 6379:6379 -d -t redis:alpine`;
-- `docker run --name mongobarber -p 27017:27017 -d -t mongo`;
-- `docker run --name pgbarber -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres`;
+- `docker run --name redisservicoaqui -p 6379:6379 -d -t redis:alpine`;
+- `docker run --name mongoservicoaqui -p 27017:27017 -d -t mongo`;
+- `docker run --name pgservicoaqui -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres`;
 
 _Obs: Caso você reinicie seu computador, deverá iniciar os containers novamente com `docker start <nome_do_container>`_
 
 ## Instalação
 
 1. Abra seu terminal em uma pasta qualquer e clone este repositório<br/>
-`git clone https://github.com/gustavo2892/servico-aqui-server-node.git`
-2. Navegue até o diretório do servidor: `cd servico-aqui-server-node`
+`git clone repositório`
+2. Navegue até o diretório do servidor: `cd pasta-do-server`
 3. Rode `yarn` para instalar todas as dependências
 4. Copie o arquivo `.env.example` e renomeie para `.env`
 5. Insira todos os valores para as variáveis de ambiente no `.env`
-6. Execute o comando `yarn sequelize db:migrate`
 6. Rode `yarn start` e `yarn queue` para iniciar a API no endereço `http://localhost:3000`.
-
-_Para uma melhor experiência, confira também o [frontend](https://github.com/gustavo2892/servico-aqui-web-react.git) do ServicoAqui!_
-
-
-_Para uma melhor experiência, confira também o [mobile](https://github.com/gustavo2892/servico-aqui-mobile-react-native) do ServicoAqui!_
