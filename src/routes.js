@@ -62,6 +62,7 @@ routes.get('/notifications', NotificationController.index);
 routes.put('/notifications/:id', NotificationController.update);
 
 routes.get('/announcements', AnnouncementController.index);
+routes.get('/announcements/all', AnnouncementController.indexAll);
 routes.post('/announcements', AnnouncementController.store);
 routes.delete('/announcements', AnnouncementController.delete);
 

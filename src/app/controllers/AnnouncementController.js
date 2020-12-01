@@ -78,6 +78,11 @@ class AnnouncementController {
 
     return res.json({message: 'The announcement was successfully deleted'});
   }
+  async indexAll(req, res) {
+    const announcements = await Announcement.find();
+
+    return res.json(announcements);
+  }
 }
 
 export default new AnnouncementController();
