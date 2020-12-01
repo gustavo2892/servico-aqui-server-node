@@ -7,14 +7,13 @@ export default async (req, res, next) => {
       email: Yup.string()
         .email()
         .required(),
-      whatsapp: Yup.string(),
+      whatsapp: Yup.string().nullable(),
       password: Yup.string()
         .required()
         .min(6),
     });
 
     await schema.validate(req.body, { abortEarly: false });
-
     return next();
   } catch (err) {
     return res

@@ -12,6 +12,7 @@ import ProviderController from './app/controllers/ProviderController';
 import ScheduleController from './app/controllers/ScheduleController';
 import SessionController from './app/controllers/SessionController';
 import UserController from './app/controllers/UserController';
+import AnnouncementController from './app/controllers/AnnouncementController';
 
 import validateUserStore from './app/validators/UserStore';
 import validateUserUpdate from './app/validators/UserUpdate';
@@ -59,5 +60,9 @@ routes.get('/schedule', ScheduleController.index);
 
 routes.get('/notifications', NotificationController.index);
 routes.put('/notifications/:id', NotificationController.update);
+
+routes.get('/announcements', AnnouncementController.index);
+routes.post('/announcements', AnnouncementController.store);
+routes.delete('/announcements', AnnouncementController.delete);
 
 export default routes;
