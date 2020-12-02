@@ -8,6 +8,9 @@ export default async (req, res, next) => {
         .email()
         .required(),
       whatsapp: Yup.string().nullable(),
+      category: Yup.string().nullable(),
+      price: Yup.string().nullable(),
+      description: Yup.string(),
       password: Yup.string()
         .required()
         .min(6),

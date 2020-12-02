@@ -28,6 +28,18 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: true,
       },
+      category: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
+      price: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
+      description: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
       // A senha será criptografada, o que será salvo será apenas um hashing
       password_hash: {
         type: Sequelize.STRING,

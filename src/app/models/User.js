@@ -14,6 +14,9 @@ class User extends Model {
         password: Sequelize.VIRTUAL,
         password_hash: Sequelize.STRING,
         provider: Sequelize.BOOLEAN,
+        category: Sequelize.STRING,
+        price: Sequelize.STRING,
+        description: Sequelize.STRING,
       },
       {
         sequelize,

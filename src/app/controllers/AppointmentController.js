@@ -27,7 +27,7 @@ class AppointmentController {
         {
           model: User,
           as: 'provider',
-          attributes: ['id', 'name'],
+          attributes: ['id', 'name', 'whatsapp'],
           include: [
             {
               model: File,
