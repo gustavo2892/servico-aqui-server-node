@@ -48,4 +48,5 @@ _Obs: Caso você reinicie seu computador, deverá iniciar os containers novament
 3. Rode `yarn` para instalar todas as dependências
 4. Copie o arquivo `.env.example` e renomeie para `.env`
 5. Insira todos os valores para as variáveis de ambiente no `.env`
-6. Rode `yarn start` e `yarn queue` para iniciar a API no endereço `http://localhost:3000`.
+6. Rode o comando `yarn sequeliize db:migrate`
+7. Rode `yarn start` e `yarn queue` para iniciar a API no endereço `http://localhost:3000`.
