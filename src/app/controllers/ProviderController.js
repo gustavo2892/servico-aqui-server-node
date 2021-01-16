@@ -13,7 +13,16 @@ class ProviderController {
 
     const providers = await User.findAll({
       where: { provider: true },
-      attributes: ['id', 'name', 'email', 'whatsapp', 'avatar_id', 'price', 'description', 'category'],
+      attributes: [
+        'id',
+        'name',
+        'email',
+        'whatsapp',
+        'avatar_id',
+        'price',
+        'description',
+        'category',
+      ],
       include: [
         {
           model: File,
@@ -26,6 +35,36 @@ class ProviderController {
     await Cache.set('providers', providers);
 
     return res.json(providers);
+  }
+
+  async store(req, res) {
+    const userExists = await User.findOne({ where: { email: req.body.email } });
+
+    if (userExists) {
+      return res.status(400).json({ error: 'User already exists.' });
+    }
+
+    const {
+      id,
+      name,
+      email,
+      whatsapp,
+      provider,
+      category,
+      price,
+      description,
+    } = await User.create(req.body);
+
+    return res.json({
+      id,
+      name,
+      email,
+      whatsapp,
+      provider,
+      category,
+      price,
+      description,
+    });
   }
 }
 
