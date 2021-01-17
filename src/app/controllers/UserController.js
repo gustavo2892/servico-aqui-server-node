@@ -23,7 +23,7 @@ class UserController {
       email,
       whatsapp,
       provider,
-      // category, 
+      // category,
       // price,
       // description
     });
@@ -48,7 +48,16 @@ class UserController {
 
     await user.update(req.body);
 
-    const { id, name, whatsapp, avatar, price, description, category } = await User.findByPk(req.userId, {
+    const {
+      id,
+      name,
+      whatsapp,
+      avatar,
+      price,
+      description,
+      category,
+      provider,
+    } = await User.findByPk(req.userId, {
       include: [
         {
           model: File,
@@ -64,9 +73,10 @@ class UserController {
       email,
       whatsapp,
       avatar,
-      price, 
-      description, 
-      category
+      price,
+      description,
+      category,
+      provider,
     });
   }
 }
