@@ -3,6 +3,10 @@ import File from '../models/File';
 
 import Cache from '../../lib/Cache';
 
+const { Op } = require("sequelize");
+
+import escapeRegExp from "lodash/escapeRegExp";
+
 class ProviderController {
   async index(req, res) {
     // const cached = await Cache.get('providers');
@@ -65,6 +69,35 @@ class ProviderController {
       price,
       description,
     });
+  }
+
+  async searchProviders(req, res) {
+    const providers = await User.findAll({
+      where: {
+        [Op.and]: [{ provider: true }, { category: req.body }]
+      },
+      attributes: [
+        'id',
+        'name',
+        'email',
+        'whatsapp',
+        'avatar_id',
+        'price',
+        'description',
+        'category',
+      ],
+      include: [
+        {
+          model: File,
+          as: 'avatar',
+          attributes: ['name', 'path', 'url'],
+        },
+      ],
+    });
+
+    // await Cache.set('providers', providers);
+
+    return res.json(providers);
   }
 }
 

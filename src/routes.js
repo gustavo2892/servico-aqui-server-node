@@ -13,11 +13,13 @@ import ScheduleController from './app/controllers/ScheduleController';
 import SessionController from './app/controllers/SessionController';
 import UserController from './app/controllers/UserController';
 import AnnouncementController from './app/controllers/AnnouncementController';
+import SearchController from './app/controllers/SearchController';
 
 import validateUserStore from './app/validators/UserStore';
 import validateUserUpdate from './app/validators/UserUpdate';
 import validateSessionStore from './app/validators/SessionStore';
 import validateAppointmentStore from './app/validators/AppointmentStore';
+
 
 import authMiddleware from './app/middlewares/auth';
 
@@ -33,6 +35,7 @@ const bruteForce = new Brute(bruteStore);
 
 routes.post('/users', validateUserStore, UserController.store);
 routes.post('/providers', validateUserStore, ProviderController.store);
+routes.get('/search', SearchController.index);
 routes.post(
   '/sessions',
   bruteForce.prevent,
