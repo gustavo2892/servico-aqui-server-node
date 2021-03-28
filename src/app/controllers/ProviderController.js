@@ -3,9 +3,9 @@ import File from '../models/File';
 
 import Cache from '../../lib/Cache';
 
-const { Op } = require("sequelize");
+const { Op } = require('sequelize');
 
-import escapeRegExp from "lodash/escapeRegExp";
+import escapeRegExp from 'lodash/escapeRegExp';
 
 class ProviderController {
   async index(req, res) {
@@ -57,6 +57,13 @@ class ProviderController {
       category,
       price,
       description,
+      cep,
+      street,
+      //address_number,
+      complement,
+      district,
+      city,
+      uf,
     } = await User.create(req.body);
 
     return res.json({
@@ -68,13 +75,20 @@ class ProviderController {
       category,
       price,
       description,
+      cep,
+      street,
+      //address_number,
+      complement,
+      district,
+      city,
+      uf,
     });
   }
 
   async searchProviders(req, res) {
     const providers = await User.findAll({
       where: {
-        [Op.and]: [{ provider: true }, { category: req.body }]
+        [Op.and]: [{ provider: true }, { category: req.body }],
       },
       attributes: [
         'id',

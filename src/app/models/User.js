@@ -17,6 +17,13 @@ class User extends Model {
         category: Sequelize.STRING,
         price: Sequelize.STRING,
         description: Sequelize.STRING,
+        cep: Sequelize.STRING,
+        street: Sequelize.STRING,
+        //address_number: Sequelize.STRING,
+        complement: Sequelize.STRING,
+        district: Sequelize.STRING,
+        city: Sequelize.STRING,
+        uf: Sequelize.STRING,
       },
       {
         sequelize,

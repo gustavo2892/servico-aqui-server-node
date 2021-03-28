@@ -11,7 +11,20 @@ class UserController {
       return res.status(400).json({ error: 'User already exists.' });
     }
 
-    const { id, name, email, whatsapp, provider } = await User.create(req.body);
+    const {
+      id,
+      name,
+      email,
+      whatsapp,
+      provider,
+      cep,
+      street,
+      //address_number,
+      complement,
+      district,
+      city,
+      uf,
+    } = await User.create(req.body);
 
     // if (provider) {
     //   await Cache.invalidate('providers');
@@ -26,6 +39,13 @@ class UserController {
       // category,
       // price,
       // description
+      cep,
+      street,
+      //address_number,
+      complement,
+      district,
+      city,
+      uf,
     });
   }
 
