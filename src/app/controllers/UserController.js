@@ -24,6 +24,7 @@ class UserController {
       district,
       city,
       uf,
+      status,
     } = await User.create(req.body);
 
     // if (provider) {
@@ -46,6 +47,7 @@ class UserController {
       district,
       city,
       uf,
+      status,
     });
   }
 
@@ -99,6 +101,8 @@ class UserController {
       provider,
     });
   }
+
+  
 }
 
 export default new UserController();

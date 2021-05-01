@@ -14,6 +14,7 @@ import SessionController from './app/controllers/SessionController';
 import UserController from './app/controllers/UserController';
 import AnnouncementController from './app/controllers/AnnouncementController';
 import SearchController from './app/controllers/SearchController';
+import ComplaintController from './app/controllers/Complaint';
 
 import validateUserStore from './app/validators/UserStore';
 import validateUserUpdate from './app/validators/UserUpdate';
@@ -22,6 +23,7 @@ import validateAppointmentStore from './app/validators/AppointmentStore';
 
 
 import authMiddleware from './app/middlewares/auth';
+
 
 const routes = new Router();
 const upload = multer(multerConfig);
@@ -64,6 +66,9 @@ routes.get('/schedule', ScheduleController.index);
 
 routes.get('/notifications', NotificationController.index);
 routes.put('/notifications/:id', NotificationController.update);
+
+routes.post('/complaint', ComplaintController.index);
+routes.put('/complaint', ComplaintController.store);
 
 routes.get('/announcements', AnnouncementController.index);
 routes.get('/announcements/all', AnnouncementController.indexAll);
