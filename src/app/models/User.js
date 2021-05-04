@@ -25,6 +25,7 @@ class User extends Model {
         city: Sequelize.STRING,
         uf: Sequelize.STRING,
         status: Sequelize.STRING,
+        type: Sequelize.STRING,
       },
       {
         sequelize,

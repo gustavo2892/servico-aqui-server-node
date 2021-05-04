@@ -25,6 +25,7 @@ class UserController {
       city,
       uf,
       status,
+      type,
     } = await User.create(req.body);
 
     // if (provider) {
@@ -48,6 +49,7 @@ class UserController {
       city,
       uf,
       status,
+      type,
     });
   }
 

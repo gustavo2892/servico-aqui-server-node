@@ -22,10 +22,10 @@ class ComplaintController {
 
     console.log('useree', user);
 
-    user.status = "Active";
+    user.status = 'Active';
 
     if (user) {
-      console.log('user', user)
+      console.log('user', user);
       await user.update(user);
 
       const {
@@ -62,6 +62,15 @@ class ComplaintController {
     }
 
     return res.json(user);
+  }
+
+  async list(req, res) {
+
+    const complaints = await Complaint.find();
+
+    console.log('useree', complaints);
+
+    return res.json(complaints);
   }
 }
 

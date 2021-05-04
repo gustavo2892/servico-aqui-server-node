@@ -21,9 +21,8 @@ import validateUserUpdate from './app/validators/UserUpdate';
 import validateSessionStore from './app/validators/SessionStore';
 import validateAppointmentStore from './app/validators/AppointmentStore';
 
-
 import authMiddleware from './app/middlewares/auth';
-
+import SessionManagerController from './app/controllers/SessionManagerController';
 
 const routes = new Router();
 const upload = multer(multerConfig);
@@ -43,6 +42,12 @@ routes.post(
   bruteForce.prevent,
   validateSessionStore,
   SessionController.store
+);
+routes.post(
+  '/sessions-manager',
+  bruteForce.prevent,
+  validateSessionStore,
+  SessionManagerController.store
 );
 
 routes.use(authMiddleware);
@@ -69,6 +74,7 @@ routes.put('/notifications/:id', NotificationController.update);
 
 routes.post('/complaint', ComplaintController.index);
 routes.put('/complaint', ComplaintController.store);
+routes.get('/complaint', ComplaintController.list);
 
 routes.get('/announcements', AnnouncementController.index);
 routes.get('/announcements/all', AnnouncementController.indexAll);
