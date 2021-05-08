@@ -41,6 +41,7 @@ class SessionController {
       description,
       price,
       category,
+      status,
     } = user;
 
     return res.json({
@@ -54,6 +55,7 @@ class SessionController {
         price,
         category,
         avatar,
+        status,
       },
       token: jwt.sign({ id }, authConfig.secret, {
         expiresIn: authConfig.expiresIn,

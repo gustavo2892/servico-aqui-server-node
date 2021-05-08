@@ -104,7 +104,15 @@ class UserController {
     });
   }
 
-  
+  async getUser(req, res) {
+    const user = await User.findOne({ where: { id: req.query.userId } });
+
+    if (!user) {
+      return res.status(400).json({ error: 'Usuário não encontrado.' });
+    }
+
+    return res.json(user);
+  }
 }
 
 export default new UserController();

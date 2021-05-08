@@ -53,6 +53,7 @@ routes.post(
 routes.use(authMiddleware);
 
 routes.put('/users', validateUserUpdate, UserController.update);
+routes.get('/user', UserController.getUser);
 
 routes.get('/providers', ProviderController.index);
 routes.get('/providers/:providerId/available', AvailableController.index);
@@ -73,8 +74,9 @@ routes.get('/notifications', NotificationController.index);
 routes.put('/notifications/:id', NotificationController.update);
 
 routes.post('/complaint', ComplaintController.index);
-routes.put('/complaint', ComplaintController.store);
+routes.put('/complaint', ComplaintController.update);
 routes.get('/complaint', ComplaintController.list);
+routes.delete('/complaint', ComplaintController.delete);
 
 routes.get('/announcements', AnnouncementController.index);
 routes.get('/announcements/all', AnnouncementController.indexAll);

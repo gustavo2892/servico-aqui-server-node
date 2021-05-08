@@ -4,29 +4,30 @@ import File from '../models/File';
 
 class ComplaintController {
   async index(req, res) {
-    const { userID, denounced, description } = req.body;
+    const { userID, denounced, description, status } = req.body;
 
     const report = await Complaint.create({
       userID,
       denounced,
       description,
+      status,
     });
 
     return report ? res.json(report) : false;
   }
 
-  async store(req, res) {
+  async update(req, res) {
     const { userId } = req.body;
 
     const user = await User.findByPk(userId);
 
-    console.log('useree', user);
+    //console.log('useree', user);
 
-    user.status = 'Active';
+    user.status = 'Block';
 
     if (user) {
       console.log('user', user);
-      await user.update(user);
+      const teste = await user.update(user, { where: { id: user.id } });
 
       const {
         id,
@@ -48,29 +49,28 @@ class ComplaintController {
         ],
       });
 
-      return res.json({
-        id,
-        name,
-        whatsapp,
-        avatar,
-        price,
-        description,
-        category,
-        provider,
-        status,
-      });
+      return res.json(teste);
     }
 
-    return res.json(user);
+    return res.json(user, 'esse');
   }
 
   async list(req, res) {
-
     const complaints = await Complaint.find();
 
-    console.log('useree', complaints);
-
     return res.json(complaints);
+  }
+
+  async delete(req, res) {
+    const { complaintID } = req.body;
+
+    const complaints = await Complaint.deleteOne({ _id: complaintID }).select({
+      name: true,
+    });
+
+    return complaints
+      ? res.json('Denuncia deletada com sucesso')
+      : res.json({ status: 404, message: 'Denuncia Não Encontrada.' });
   }
 }
 

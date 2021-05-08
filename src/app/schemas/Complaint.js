@@ -15,6 +15,11 @@ const ComplaintSchema = new mongoose.Schema(
       required: true,
       default: false,
     },
+    status: {
+      type: String,
+      required: true,
+      default: 'Analisar',
+    },
   },
   {
     timestamps: true,
