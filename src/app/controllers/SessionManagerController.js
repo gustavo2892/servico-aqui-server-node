@@ -6,7 +6,7 @@ import authConfig from '../../config/auth';
 
 class SessionManagerController {
   async store(req, res) {
-    console.log('entrnado aqui')
+  
     const { email, password } = req.body;
 
     const user = await User.findOne({
@@ -25,7 +25,7 @@ class SessionManagerController {
     }
 
     if (user.status === 'Block') {
-      console.log('es', user.status)
+    
       return res.status(401).json({ error: 'Your account is banned' });
     }
 

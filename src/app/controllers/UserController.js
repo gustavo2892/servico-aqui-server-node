@@ -81,6 +81,7 @@ class UserController {
       description,
       category,
       provider,
+      status,
     } = await User.findByPk(req.userId, {
       include: [
         {
@@ -101,17 +102,50 @@ class UserController {
       description,
       category,
       provider,
+      status,
     });
   }
 
   async getUser(req, res) {
-    const user = await User.findOne({ where: { id: req.query.userId } });
+    const user = await User.findOne({ where: { id: req.params.id } });
 
     if (!user) {
       return res.status(400).json({ error: 'Usuário não encontrado.' });
     }
 
-    return res.json(user);
+    const {
+      id,
+      name,
+      whatsapp,
+      email,
+      avatar,
+      price,
+      description,
+      category,
+      provider,
+      status,
+    } = await User.findByPk(req.params.id, {
+      include: [
+        {
+          model: File,
+          as: 'avatar',
+          attributes: ['id', 'path', 'url'],
+        },
+      ],
+    });
+
+    return res.json({
+      id,
+      name,
+      email,
+      whatsapp,
+      avatar,
+      price,
+      description,
+      category,
+      provider,
+      status,
+    });
   }
 }
 

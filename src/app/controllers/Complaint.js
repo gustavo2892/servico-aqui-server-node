@@ -4,10 +4,10 @@ import File from '../models/File';
 
 class ComplaintController {
   async index(req, res) {
-    const { userID, denounced, description, status } = req.body;
+    const { userId, denounced, description, status } = req.body;
 
     const report = await Complaint.create({
-      userID,
+      userId,
       denounced,
       description,
       status,
@@ -21,12 +21,9 @@ class ComplaintController {
 
     const user = await User.findByPk(userId);
 
-    //console.log('useree', user);
-
     user.status = 'Block';
 
     if (user) {
-      console.log('user', user);
       const teste = await user.update(user, { where: { id: user.id } });
 
       const {
@@ -52,7 +49,7 @@ class ComplaintController {
       return res.json(teste);
     }
 
-    return res.json(user, 'esse');
+    return res.json(user);
   }
 
   async list(req, res) {

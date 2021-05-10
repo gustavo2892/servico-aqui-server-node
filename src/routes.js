@@ -53,7 +53,7 @@ routes.post(
 routes.use(authMiddleware);
 
 routes.put('/users', validateUserUpdate, UserController.update);
-routes.get('/user', UserController.getUser);
+routes.get('/user/:id', UserController.getUser);
 
 routes.get('/providers', ProviderController.index);
 routes.get('/providers/:providerId/available', AvailableController.index);

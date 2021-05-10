@@ -6,7 +6,7 @@ import authConfig from '../../config/auth';
 
 class SessionController {
   async store(req, res) {
-    console.log('entrnado aqui')
+    
     const { email, password } = req.body;
 
     const user = await User.findOne({
