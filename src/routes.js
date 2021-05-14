@@ -57,7 +57,7 @@ routes.get('/user/:id', UserController.getUser);
 
 routes.get('/providers', ProviderController.index);
 routes.get('/providers/:providerId/available', AvailableController.index);
-
+routes.get('/providers/:providerId', ProviderController.findOneProvider);
 routes.get('/appointments', AppointmentController.index);
 routes.post(
   '/appointments',
