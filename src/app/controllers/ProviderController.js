@@ -113,6 +113,31 @@ class ProviderController {
 
     return res.json(providers);
   }
+
+  async findOneProvider(req, res) {
+    const user = await User.findOne({
+      where: { id: req.params.providerId, provider: true },
+      attributes: [
+        'id',
+        'name',
+        'email',
+        'whatsapp',
+        'avatar_id',
+        'price',
+        'description',
+        'category',
+      ],
+      include: [
+        {
+          model: File,
+          as: 'avatar',
+          attributes: ['name', 'path', 'url'],
+        },
+      ],
+    });
+
+    return res.json(user);
+  }
 }
 
 export default new ProviderController();
