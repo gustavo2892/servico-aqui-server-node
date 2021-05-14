@@ -6,7 +6,11 @@ const ComplaintSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    denounced: {
+    userName: {
+      type: String,
+      required: true,
+    },
+    providerId: {
       type: String,
       required: true,
     },

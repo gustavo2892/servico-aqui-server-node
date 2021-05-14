@@ -4,11 +4,12 @@ import File from '../models/File';
 
 class ComplaintController {
   async index(req, res) {
-    const { userId, denounced, description, status } = req.body;
+    const { userId, userName, providerId, description, status } = req.body;
 
     const report = await Complaint.create({
       userId,
-      denounced,
+      userName,
+      providerId,
       description,
       status,
     });
@@ -59,9 +60,9 @@ class ComplaintController {
   }
 
   async delete(req, res) {
-    const { complaintID } = req.body;
+    const { complaintId } = req.body;
 
-    const complaints = await Complaint.deleteOne({ _id: complaintID }).select({
+    const complaints = await Complaint.deleteOne({ _id: complaintId }).select({
       name: true,
     });
 
