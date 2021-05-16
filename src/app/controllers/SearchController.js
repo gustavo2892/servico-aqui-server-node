@@ -14,12 +14,17 @@ module.exports = {
         [Op.or]: [
           {
             name: {
-              [Op.like]: query,
+              [Op.iLike]: query,
             },
           },
           {
             category: {
-              [Op.like]: query,
+              [Op.iLike]: query,
+            },
+          },
+          {
+            city: {
+              [Op.iLike]: query,
             },
           },
         ],
