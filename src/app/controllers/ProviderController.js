@@ -26,6 +26,7 @@ class ProviderController {
         'price',
         'description',
         'category',
+        'city',
       ],
       include: [
         {
