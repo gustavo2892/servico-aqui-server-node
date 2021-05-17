@@ -55,6 +55,7 @@ routes.use(authMiddleware);
 
 routes.put('/users', validateUserUpdate, UserController.update);
 routes.get('/users', UserController.index);
+routes.put('/block', UserController.blockUser);
 routes.get('/user/:id', UserController.getUser);
 
 routes.get('/providers', ProviderController.index);
