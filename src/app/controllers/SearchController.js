@@ -34,4 +34,33 @@ module.exports = {
 
     return response.json({ providers });
   },
+
+  async searchNoProviders(request, response) {
+    const { query } = request.query;
+
+    const users = await User.findAll({
+      where: {
+        [Op.or]: [
+          {
+            name: {
+              [Op.iLike]: query,
+            },
+          },
+          {
+            category: {
+              [Op.iLike]: query,
+            },
+          },
+          {
+            city: {
+              [Op.iLike]: query,
+            },
+          },
+        ],
+        provider: false,
+      },
+    });
+
+    return response.json(users);
+  },
 };

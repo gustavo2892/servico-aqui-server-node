@@ -4,6 +4,40 @@ import File from '../models/File';
 // import Cache from '../../lib/Cache';
 
 class UserController {
+  async index(req, res) {
+    // const cached = await Cache.get('providers');
+
+    // if (cached) {
+    //   return res.json(cached);
+    // }
+
+    const users = await User.findAll({
+      where: { provider: false },
+      attributes: [
+        'id',
+        'name',
+        'email',
+        'whatsapp',
+        'avatar_id',
+        'price',
+        'description',
+        'category',
+        'city',
+      ],
+      include: [
+        {
+          model: File,
+          as: 'avatar',
+          attributes: ['name', 'path', 'url'],
+        },
+      ],
+    });
+
+    // await Cache.set('providers', providers);
+
+    return res.json(users);
+  }
+
   async store(req, res) {
     const userExists = await User.findOne({ where: { email: req.body.email } });
 
