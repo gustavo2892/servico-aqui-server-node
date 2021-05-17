@@ -181,6 +181,56 @@ class UserController {
       status,
     });
   }
+
+  async blockUser(req, res) {
+    const { email } = req.body;
+
+    const user = await User.findByPk(req.userId);
+
+    if (email !== user.email) {
+      const userExists = await User.findOne({ where: { email } });
+
+      if (userExists) {
+        return res.status(400).json({ error: 'User already exists.' });
+      }
+    }
+
+
+    await user.update(req.body);
+
+    const {
+      id,
+      name,
+      whatsapp,
+      avatar,
+      price,
+      description,
+      category,
+      provider,
+      status,
+    } = await User.findByPk(req.userId, {
+      include: [
+        {
+          model: File,
+          as: 'avatar',
+          attributes: ['id', 'path', 'url'],
+        },
+      ],
+    });
+
+    return res.json({
+      id,
+      name,
+      email,
+      whatsapp,
+      avatar,
+      price,
+      description,
+      category,
+      provider,
+      status,
+    });
+  }
 }
 
 export default new UserController();
