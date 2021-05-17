@@ -23,6 +23,7 @@ class UserController {
         'description',
         'category',
         'city',
+        'status',
       ],
       include: [
         {
