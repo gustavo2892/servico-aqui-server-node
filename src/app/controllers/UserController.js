@@ -200,7 +200,7 @@ class UserController {
       category,
       provider,
       status,
-    } = await User.findByPk(req.userId, {
+    } = await User.findByPk(req.body.userId, {
       include: [
         {
           model: File,
