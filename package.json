@@ -34,7 +34,7 @@
     "pg-hstore": "^2.3.3",
     "rate-limit-redis": "^1.7.0",
     "redis": "^2.8.0",
-    "sequelize": "^5.15.1",
+    "sequelize": "^6.6.2",
     "youch": "^2.0.10",
     "yup": "^0.27.0"
   },
@@ -46,7 +46,7 @@
     "eslint-plugin-prettier": "^3.1.0",
     "nodemon": "^1.19.1",
     "prettier": "^1.18.2",
-    "sequelize-cli": "^5.5.0",
+    "sequelize-cli": "^6.2.0",
     "sucrase": "^3.10.1"
   }
 }

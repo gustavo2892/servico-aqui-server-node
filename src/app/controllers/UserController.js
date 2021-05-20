@@ -183,7 +183,7 @@ class UserController {
     });
   }
 
-  async blockUser(req, res) {
+  async updateStatus(req, res) {
     const { email } = req.body;
 
     const user = await User.findOne({ where: { email } });

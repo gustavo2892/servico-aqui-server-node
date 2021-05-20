@@ -6,7 +6,7 @@ import Cache from '../../lib/Cache';
 const { Op } = require('sequelize');
 
 module.exports = {
-  async index(request, response) {
+  async searchProviders(request, response) {
     const { query } = request.query;
 
     const providers = await User.findAll({
@@ -14,17 +14,17 @@ module.exports = {
         [Op.or]: [
           {
             name: {
-              [Op.iLike]: query,
+              [Op.regexp]: query,
             },
           },
           {
             category: {
-              [Op.iLike]: query,
+              [Op.regexp]: query,
             },
           },
           {
             city: {
-              [Op.iLike]: query,
+              [Op.regexp]: query,
             },
           },
         ],
@@ -43,17 +43,17 @@ module.exports = {
         [Op.or]: [
           {
             name: {
-              [Op.iLike]: query,
+              [Op.regexp]: query,
             },
           },
           {
             category: {
-              [Op.iLike]: query,
+              [Op.regexp]: query,
             },
           },
           {
             city: {
-              [Op.iLike]: query,
+              [Op.regexp]: query,
             },
           },
         ],
