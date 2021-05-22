@@ -36,8 +36,6 @@ const bruteForce = new Brute(bruteStore);
 
 routes.post('/users', validateUserStore, UserController.store);
 routes.post('/providers', validateUserStore, ProviderController.store);
-routes.get('/search/providers', SearchController.searchProviders);
-routes.get('/search/users', SearchController.searchNoProviders);
 routes.post(
   '/sessions',
   bruteForce.prevent,
@@ -52,6 +50,10 @@ routes.post(
 );
 
 routes.use(authMiddleware);
+
+routes.get('/search/providers', SearchController.searchProviders);
+routes.get('/search/providers/name', SearchController.searchProvidersName);
+routes.get('/search/users', SearchController.searchNoProviders);
 
 routes.put('/users', validateUserUpdate, UserController.update);
 routes.get('/users', UserController.index);

@@ -27,6 +27,30 @@ module.exports = {
               [Op.regexp]: query,
             },
           },
+          {
+            uf: {
+              [Op.regexp]: query,
+            },
+          },
+        ],
+        provider: true,
+      },
+    });
+
+    return response.json({ providers });
+  },
+
+  async searchProvidersName(request, response) {
+    const { query } = request.query;
+
+    const providers = await User.findAll({
+      where: {
+        [Op.or]: [
+          {
+            name: {
+              [Op.regexp]: query,
+            },
+          },
         ],
         provider: true,
       },
