@@ -1,11 +1,10 @@
+import escapeRegExp from 'lodash/escapeRegExp';
 import User from '../models/User';
 import File from '../models/File';
 
 import Cache from '../../lib/Cache';
 
 const { Op } = require('sequelize');
-
-import escapeRegExp from 'lodash/escapeRegExp';
 
 class ProviderController {
   async index(req, res) {
@@ -27,6 +26,7 @@ class ProviderController {
         'description',
         'category',
         'city',
+        'uf',
         'status',
       ],
       include: [
@@ -61,7 +61,7 @@ class ProviderController {
       description,
       cep,
       street,
-      //address_number,
+      // address_number,
       complement,
       district,
       city,
@@ -79,7 +79,7 @@ class ProviderController {
       description,
       cep,
       street,
-      //address_number,
+      // address_number,
       complement,
       district,
       city,

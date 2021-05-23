@@ -29,7 +29,7 @@ class ScheduleController {
         {
           model: User,
           as: 'user',
-          attributes: ['name'],
+          attributes: ['name', 'whatsapp'],
         },
       ],
       order: ['date'],

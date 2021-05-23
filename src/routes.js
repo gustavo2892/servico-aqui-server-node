@@ -38,13 +38,13 @@ routes.post('/users', validateUserStore, UserController.store);
 routes.post('/providers', validateUserStore, ProviderController.store);
 routes.post(
   '/sessions',
-  bruteForce.prevent,
+  // bruteForce.prevent,
   validateSessionStore,
   SessionController.store
 );
 routes.post(
   '/sessions-manager',
-  bruteForce.prevent,
+  // bruteForce.prevent,
   validateSessionStore,
   SessionManagerController.store
 );
