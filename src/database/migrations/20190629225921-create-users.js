@@ -53,27 +53,27 @@ module.exports = {
       },
       cep: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       street: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       complement: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       district: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       city: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       uf: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       status: {
         type: Sequelize.STRING,
