@@ -42,6 +42,9 @@ class SessionController {
       price,
       category,
       status,
+      cep,
+      city,
+      uf,
     } = user;
 
     return res.json({
@@ -56,6 +59,9 @@ class SessionController {
         category,
         avatar,
         status,
+        cep,
+        city,
+        uf,
       },
       token: jwt.sign({ id }, authConfig.secret, {
         expiresIn: authConfig.expiresIn,

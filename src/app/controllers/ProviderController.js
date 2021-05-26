@@ -128,6 +128,9 @@ class ProviderController {
         'price',
         'description',
         'category',
+        'cep',
+        'city',
+        'uf',
       ],
       include: [
         {

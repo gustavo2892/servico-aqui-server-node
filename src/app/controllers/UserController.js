@@ -117,6 +117,9 @@ class UserController {
       category,
       provider,
       status,
+      city,
+      uf,
+      cep,
     } = await User.findByPk(req.userId, {
       include: [
         {
@@ -138,6 +141,9 @@ class UserController {
       category,
       provider,
       status,
+      city,
+      uf,
+      cep,
     });
   }
 
