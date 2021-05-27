@@ -14,22 +14,22 @@ module.exports = {
         [Op.or]: [
           {
             name: {
-              [Op.regexp]: query,
+              [Op.iRegexp]: query,
             },
           },
           {
             category: {
-              [Op.regexp]: query,
+              [Op.iRegexp]: query,
             },
           },
           {
             city: {
-              [Op.regexp]: query,
+              [Op.iRegexp]: query,
             },
           },
           {
             uf: {
-              [Op.regexp]: query,
+              [Op.iRegexp]: query,
             },
           },
         ],
