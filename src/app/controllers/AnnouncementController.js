@@ -19,6 +19,7 @@ class AnnouncementController {
 
     return res.json(announcements);
   }
+
   async store(req, res) {
     const { title, whatsapp, description } = req.body;
 
@@ -51,6 +52,7 @@ class AnnouncementController {
 
     return res.json(announcement);
   }
+
   async delete(req, res) {
     const checkIsNotProvider = await User.findOne({
       where: { id: req.userId, provider: false },
@@ -76,6 +78,15 @@ class AnnouncementController {
 
     return res.json({ message: 'The announcement was successfully deleted' });
   }
+
+  async deleteAnnoucementManager(req, res) {
+    await Announcement.deleteOne({
+      _id: req.body.announcementId,
+    });
+
+    return res.json({ message: 'The announcement was successfully deleted' });
+  }
+
   async indexAll(req, res) {
     const announcements = await Announcement.find();
 
