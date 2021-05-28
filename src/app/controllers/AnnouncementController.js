@@ -38,16 +38,16 @@ class AnnouncementController {
 
     if (announcementsExistis) {
       return res
-      .status(401)
-      .json({ error: 'The user already has an announcement' });
+        .status(401)
+        .json({ error: 'The user already has an announcement' });
     }
 
     const announcement = await Announcement.create({
       user: req.userId,
       title,
       whatsapp,
-      description
-    })
+      description,
+    });
 
     return res.json(announcement);
   }
@@ -67,16 +67,14 @@ class AnnouncementController {
     });
 
     if (!announcementsExistis) {
-      return res
-      .status(401)
-      .json({ error: 'The user has no announcement' });
+      return res.status(401).json({ error: 'The user has no announcement' });
     }
 
     await Announcement.deleteOne({
       user: req.userId,
     });
 
-    return res.json({message: 'The announcement was successfully deleted'});
+    return res.json({ message: 'The announcement was successfully deleted' });
   }
   async indexAll(req, res) {
     const announcements = await Announcement.find();

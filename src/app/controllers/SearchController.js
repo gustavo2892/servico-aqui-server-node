@@ -1,7 +1,9 @@
 import User from '../models/User';
+import Announcement from '../schemas/Announcement';
 import File from '../models/File';
 
 import Cache from '../../lib/Cache';
+import { escapeRegExp } from 'lodash';
 
 const { Op } = require('sequelize');
 
@@ -86,5 +88,23 @@ module.exports = {
     });
 
     return response.json(users);
+  },
+
+  async searchAnnouncement(request, response) {
+    const { query } = request.query;
+    console.log('teste', query);
+
+    if (!query || query.length < 2) {
+      const list = [];
+      return response.json(list);
+    }
+
+    const regex = new RegExp(escapeRegExp(query), 'gim');
+
+    const list = await Announcement.find({
+      $or: [{ title: { $regex: regex } }, { description: { $regex: regex } }],
+    });
+
+    return response.json(list);
   },
 };

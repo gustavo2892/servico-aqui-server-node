@@ -54,6 +54,7 @@ routes.use(authMiddleware);
 routes.get('/search/providers', SearchController.searchProviders);
 routes.get('/search/providers/name', SearchController.searchProvidersName);
 routes.get('/search/users', SearchController.searchNoProviders);
+routes.get('/search/annoucement', SearchController.searchAnnouncement);
 
 routes.put('/users', validateUserUpdate, UserController.update);
 routes.get('/users', UserController.index);
