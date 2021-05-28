@@ -88,5 +88,9 @@ routes.get('/announcements', AnnouncementController.index);
 routes.get('/announcements/all', AnnouncementController.indexAll);
 routes.post('/announcements', AnnouncementController.store);
 routes.delete('/announcements', AnnouncementController.delete);
+routes.delete(
+  '/delete/announcements',
+  AnnouncementController.deleteAnnoucementManager
+);
 
 export default routes;
