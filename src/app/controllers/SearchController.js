@@ -37,6 +37,13 @@ module.exports = {
         ],
         provider: true,
       },
+      include: [
+        {
+          model: File,
+          as: 'avatar',
+          attributes: ['name', 'path', 'url'],
+        },
+      ],
     });
 
     return response.json({ providers });
